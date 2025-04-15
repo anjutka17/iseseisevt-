@@ -35,8 +35,7 @@ def keskmine(vitamiinid):
 def top_k(nimed, vitamiinid):
     k = int(input("Mitu parimat inimest soovid näha? "))
     koos = list(zip(nimed, vitamiinid))
-    koos.sort()
-    koos.reverse()
+    koos.sort(reverse=True)
     print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
     for nimi, vitamiin in koos[:k]:
         print(f"{nimi} - {vitamiin}")

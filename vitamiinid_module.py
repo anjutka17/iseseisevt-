@@ -6,9 +6,7 @@ def loo_andmed():
     """
     nimed = ["Anna","Milana", "Maria", "Anastasia", "Alina", "Marina", "Alisia"]
     vitamiinid = []
-
     n = int(input("Mitu patsienti? "))
-
     for _ in range(n):
       nimi = input("Sisesta patsiendi nimi: ")
       nimed.append(nimi)
@@ -28,7 +26,6 @@ def puudujääk(nimed, vitamiinid):
 def keskmine(vitamiinid):
     """Выводит среднее значение витамина D"""
     if vitamiinid:
-
         avg = sum(vitamiinid) / len(vitamiinid)
         print(f"\nKeskmine D-vitamiini tase: {avg:.2f}")
     else:
@@ -36,14 +33,13 @@ def keskmine(vitamiinid):
 
 
 def top_k(nimed, vitamiinid):
-k = int(input("Mitu parimat inimest soovid näha? "))
-koos = list(zip(nimed, vitamiinid))
-koos.sort()
-koos.reverse()
-print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
-for i in range(min(k, len(koos))):
-      print(f"{koos[i][0]} - {koos[i][1]}") 
-
+    k = int(input("Mitu parimat inimest soovid näha? "))
+    koos = list(zip(nimed, vitamiinid))
+    koos.sort()
+    koos.reverse()
+    print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
+    for nimi, vitamiin in koos[:k]:
+        print(f"{nimi} - {vitamiin}")
 
 def otsi_nime_jargi(nimed, vitamiinid):
     """Поиск пациента по имени"""
@@ -61,7 +57,7 @@ def otsi_nime_jargi(nimed, vitamiinid):
 def oma_valik(nimed, vitamiinid):
 """Пример: выводит количество пациентов с уровнем > 80"""
 count = 0
-for v in vitamiinid:
-    if v > 80:
-    count += 1
-    print(f"\nPatsiente, kelle D-vitamiini tase > 80: {count}") 
+    for v in vitamiinid:
+        if v > 80:
+            count += 1
+            print(f"\nPatsiente, kelle D-vitamiini tase > 80: {count}") 

@@ -36,16 +36,13 @@ def keskmine(vitamiinid):
 
 
 def top_k(nimed, vitamiinid):
-"""Выводит список K людей с самым высоким уровнем витамина D"""
 k = int(input("Mitu parimat inimest soovid näha? "))
 koos = list(zip(nimed, vitamiinid))
-   for i in range(len(koos)):
-       for j in range(i + 1, len(koos)):
-        if koos[i][1] < koos[j][1]:
-koos[i], koos[j] = koos[j], koos[i]
+koos.sort()
+koos.reverse()
 print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
 for i in range(min(k, len(koos))):
-print(f"{koos[i][0]} - {koos[i][1]}") 
+      print(f"{koos[i][0]} - {koos[i][1]}") 
 
 
 def otsi_nime_jargi(nimed, vitamiinid):

@@ -36,14 +36,16 @@ def keskmine(vitamiinid):
 
 
 def top_k(nimed, vitamiinid):
-    """Выводит список K людей с самым высоким уровнем витамина D"""
-    k = int(input("Mitu parimat inimest soovid näha? "))
-    koos = list(zip(nimed, vitamiinid))
-    koos.sort(key=lambda x: x[1], reverse=True)
-
-    print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
-    for nimi, vitamiin in koos[:k]:
-         print(f"{nimi} - {vitamiin}")
+"""Выводит список K людей с самым высоким уровнем витамина D"""
+k = int(input("Mitu parimat inimest soovid näha? "))
+koos = list(zip(nimed, vitamiinid))
+   for i in range(len(koos)):
+       for j in range(i + 1, len(koos)):
+        if koos[i][1] < koos[j][1]:
+koos[i], koos[j] = koos[j], koos[i]
+print(f"\nTop {k} inimest D-vitamiini sisaldusega:")
+for i in range(min(k, len(koos))):
+print(f"{koos[i][0]} - {koos[i][1]}") 
 
 
 def otsi_nime_jargi(nimed, vitamiinid):
@@ -52,8 +54,7 @@ def otsi_nime_jargi(nimed, vitamiinid):
     leitud = False
     for i in range(len(nimed)):
         if i < len(vitamiinid):
-
-            if nimed[i].lower() == otsitav.lower():
+             if nimed[i].lower() == otsitav.lower():
                 print(f"{nimed[i]} - {vitamiinid[i]}")
                 leitud = True
     if not leitud:
@@ -61,7 +62,9 @@ def otsi_nime_jargi(nimed, vitamiinid):
 
 
 def oma_valik(nimed, vitamiinid):
-    """Пример: выводит количество пациентов с уровнем > 80"""
-    count = sum(1 for v in vitamiinid if v > 80)
-    print(f"\nPatsiente, kelle D-vitamiini tase > 80: {count}")
-
+"""Пример: выводит количество пациентов с уровнем > 80"""
+count = 0
+for v in vitamiinid:
+    if v > 80:
+    count += 1
+    print(f"\nPatsiente, kelle D-vitamiini tase > 80: {count}") 
